@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title_html %}
+    Tasks list
+{% endblock %}
+
+{% block h1 %}
+    <h1>Lista Attività</h1>
+{% endblock %}
+
+
+
+{% block centrale %}
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if giorni.has_previous %}
+            <a href="?page={{ giorni.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ giorni.number }} of {{ giorni.paginator.num_pages }}.
+        </span>
+
+        {% if giorni.has_next %}
+            <a href="?page={{ giorni.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+    <table class="table">
+
+        <tr>
+
+            <th class="scope">Giorno</th>
+
+            <th class="scope">Dettagli attività</th>
+
+            <th class="scope">Personale assente</th>
+
+        </tr>
+
+            {% for day in giorni %}
+
+            <tr>
+                <th >
+                    {{ day.giorno }}
+                </th>
+
+                <td>
+
+                <table class="table table-striped">
+
+                <thead class="thead-dark">
+
+                    <th>Attività</th>
+
+                    <th>Tecnici</th>
+
+                    <th>Ora arrivo</th>
+
+                    <th>Cliente</th>
+
+                    <th>Riferimento</th>
+
+                    <th>Note</th>
+
+                </thead>
+
+                {% for task in day.attivita.all%}
+
+                <tr>
+
+                    <td> {{ task.descrizione }} </td>
+
+                    <td>
+                        <table>
+                            {%  for tecnicos in task.tecnici.all %}
+                                <div> {{ tecnicos }} </div>
+                            {% endfor %}
+                        </table>
+                    </td>
+
+                    <td> {{ task.oraArrivo }} </td>
+
+                    <td> {{ task.cliente }} </td>
+
+                    <td> {{ task.riferimentoCommessa }} </td>
+
+                    <td> {{ task.note }} <div class = container> <a href="{% url "download" task.id %} ">Scarica!</a> </div></td>
+
+                </tr>
+
+                {% endfor %}
+
+
+                </table>
+
+                </td>
+
+                 <td>
+
+                    <table>
+                        {%  for assenti in day.personaleAssente.all %}
+                            <tr> {{ assenti }} </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+    </table>
+
+
+
+{% endblock %}
