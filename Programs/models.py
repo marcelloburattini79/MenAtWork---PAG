@@ -105,22 +105,21 @@ class Task(models.Model):
 
     descrizione = models.CharField(max_length=2000, verbose_name='descrizione')
 
-    oraArrivo = models.CharField(max_length=500, verbose_name='Ora di arrivo', null = True, blank=True, default=None, )
+    oraArrivo = models.CharField(max_length=500, verbose_name='Ora di arrivo',
+                                null = True, blank=True, default='--')
 
-    cliente = models.ForeignKey(Cliente, verbose_name="Cliente", null=True,
-                                default=None, blank=True)
+    cliente = models.ForeignKey(Cliente, verbose_name="Cliente", default=None)
 
     tecnici = models.ManyToManyField(Tecnico, verbose_name='Tecnici', related_name='taskAssegnati',
-                                    blank=True)
+                                    blank=True,)
 
-    riferimentoCommessa = models.ForeignKey(Amministrativo, verbose_name='Riferimento commessa',
-                                            null = True,  default=None)
+    riferimentoCommessa = models.ForeignKey(Amministrativo, verbose_name='Riferimento commessa', default=None)
 
     note = models.TextField(verbose_name='Note', null = True, blank=True, default=None, )
 
     offerta = models.FileField(upload_to='offerte', verbose_name = 'Offerta', null = True, blank=True)
 
-    giorno = models.ManyToManyField(Giorno, verbose_name='Data', related_name='attivita', default=None)
+    giorno = models.ManyToManyField(Giorno, verbose_name='Data', related_name='attivita',)
 
 
     def __str__(self):
