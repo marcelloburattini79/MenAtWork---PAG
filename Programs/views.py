@@ -8,6 +8,7 @@ from django.http import  HttpResponse, HttpResponseRedirect
 import os
 import MenAtWork.settings
 from django.core.files import File
+from django.forms import Textarea
 
 
 
@@ -145,7 +146,9 @@ class Form_TaskMF(forms.ModelForm):
 
         model = Task
 
-        exclude = ('',) #Questa variabile di può inserire per escludere qualche campo del model
+        fields = '__all__' #Questa variabile specifica i campi del model che vanno riportati nella Form
+
+        widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
 
 
 
