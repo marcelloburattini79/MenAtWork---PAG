@@ -72,7 +72,7 @@
 
                 <tr>
 
-                    <td> {{ task.descrizione }} </td>
+                    <td> <a href="{% url "update_task_CUST" task.id %}"> {{ task.descrizione }} </a> </td>
 
                     <td>
                         <table>

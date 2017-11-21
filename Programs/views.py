@@ -68,14 +68,12 @@ class Form_attivita(forms.Form):
 
     note = forms.CharField(label='Note', widget=forms.Textarea, required=False)
 
-    offerta = forms.FileField(label = 'Offerta')
-
-    #giorno = forms.ModelMultipleChoiceField(label='Data',queryset = Giorno.objects.order_by('giorno'))
+    offerta = forms.FileField(label = 'Offerta', required=False)
 
     dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
 
-
 def creaAttivita(request):
+
     if request.POST:
         form = Form_attivita(request.POST, request.FILES)
 
@@ -117,6 +115,77 @@ def creaAttivita(request):
         form = Form_attivita()
         return render(request, 'create_task.html', {'form':form})
 
+class Form_TaskMF(forms.ModelForm):
+    #from_date = forms.DateField(widget=AdminDateWidget())
+
+    dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
+
+    def getDia(self):
+        return self.instance.dia
+
+    class Meta:
+
+        model = Task
+
+        exclude = ('',) #Questa variabile specifica i campi del model che vanno riportati nella Form
+
+        widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
+
+def updateAttivita(request, pk):
+
+    if request.POST:
+        form = Form_TaskMF(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            descrizione = form.cleaned_data['descrizione']
+            oraArrivo = form.cleaned_data['oraArrivo']
+            cliente = form.cleaned_data['cliente']
+            tecnici = form.cleaned_data['tecnici']
+            riferimentoCommessa = form.cleaned_data['riferimentoCommessa']
+            note = form.cleaned_data['note']
+
+            offerta = form.cleaned_data['offerta']
+
+            dia = form.cleaned_data['dia']
+
+            newAttivita = Task.objects.create(descrizione=descrizione,
+                               oraArrivo=oraArrivo,
+                               cliente=cliente,
+                               riferimentoCommessa=riferimentoCommessa,
+                               note=note,
+                               offerta=offerta,
+                                               )
+            for tecnicos in tecnici:
+                newAttivita.tecnici.add(tecnicos)
+
+
+            giorno = Giorno.objects.get(giorno=dia)
+
+            newAttivita.giorno.add(giorno)
+
+            newAttivita.save()
+
+            return HttpResponse('SuperuserNEW creato con successo!')
+        else:
+            return HttpResponse('Fallito?!?')
+
+    else:
+        attivita = Task.objects.get(id=pk)
+
+
+        form = Form_TaskMF(instance=attivita)
+
+        form.fields['dia'] = forms.DateField(widget=SelectDateWidget(), initial='10/11/2017')
+
+        #form.instance.dia.initial=datetime.now()
+
+        #morning = form.getDia()
+
+        #morning.initial=datetime.now()
+
+        return render(request, 'create_task.html', {'form':form})
+
 def taskDettagli(request, pk):
 
     attivitaCheck = Task.objects.filter(id = pk)
@@ -147,18 +216,9 @@ def provaDownLoad(request, pk):
     return response
 
 
-class Form_TaskMF(forms.ModelForm):
-    #from_date = forms.DateField(widget=AdminDateWidget())
 
-    dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
 
-    class Meta:
 
-        model = Task
-
-        exclude = ('giorno',) #Questa variabile specifica i campi del model che vanno riportati nella Form
-
-        widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
 
 
 
