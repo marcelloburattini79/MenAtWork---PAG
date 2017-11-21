@@ -10,6 +10,10 @@ import MenAtWork.settings
 from django.core.files import File
 from django.forms import Textarea
 from django.contrib.admin.widgets import AdminDateWidget
+from django.forms.fields import DateField
+from django.forms.extras.widgets import SelectDateWidget
+from django.utils import timezone
+
 
 
 
@@ -66,7 +70,9 @@ class Form_attivita(forms.Form):
 
     offerta = forms.FileField(label = 'Offerta')
 
-    giorno = forms.ModelMultipleChoiceField(label='Data',queryset = Giorno.objects.order_by('giorno'))
+    #giorno = forms.ModelMultipleChoiceField(label='Data',queryset = Giorno.objects.order_by('giorno'))
+
+    dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
 
 
 def creaAttivita(request):
@@ -84,7 +90,7 @@ def creaAttivita(request):
 
             offerta = form.cleaned_data['offerta']
 
-            giorno = form.cleaned_data['giorno']
+            dia = form.cleaned_data['dia']
 
             newAttivita = Task.objects.create(descrizione=descrizione,
                                oraArrivo=oraArrivo,
@@ -97,7 +103,7 @@ def creaAttivita(request):
                 newAttivita.tecnici.add(tecnicos)
 
 
-            giorno = giorno.get()
+            giorno = Giorno.objects.get(giorno=dia)
 
             newAttivita.giorno.add(giorno)
 
@@ -144,15 +150,13 @@ def provaDownLoad(request, pk):
 class Form_TaskMF(forms.ModelForm):
     #from_date = forms.DateField(widget=AdminDateWidget())
 
-    kol = forms.IntegerField()
+    dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
 
     class Meta:
 
         model = Task
 
-        fields = '__all__' #Questa variabile specifica i campi del model che vanno riportati nella Form
-
-
+        exclude = ('giorno',) #Questa variabile specifica i campi del model che vanno riportati nella Form
 
         widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
 
@@ -168,6 +172,10 @@ def creaAttivitaMF(request):
         if form.is_valid:
 
             form.save(commit=True)
+
+            form.giorno = form.cleaned_data['dia']
+
+            form.save()
 
             return HttpResponseRedirect('listaTaskPGN')
 
