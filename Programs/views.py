@@ -9,6 +9,7 @@ import os
 import MenAtWork.settings
 from django.core.files import File
 from django.forms import Textarea
+from django.contrib.admin.widgets import AdminDateWidget
 
 
 
@@ -141,12 +142,17 @@ def provaDownLoad(request, pk):
 
 
 class Form_TaskMF(forms.ModelForm):
+    #from_date = forms.DateField(widget=AdminDateWidget())
+
+    kol = forms.IntegerField()
 
     class Meta:
 
         model = Task
 
         fields = '__all__' #Questa variabile specifica i campi del model che vanno riportati nella Form
+
+
 
         widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
 
