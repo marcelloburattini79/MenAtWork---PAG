@@ -176,13 +176,13 @@ def updateAttivita(request, pk):
 
         form = Form_TaskMF(instance=attivita)
 
-        form.fields['dia'] = forms.DateField(widget=SelectDateWidget(), initial='10/11/2017')
+        bomdia = form.instance.giorno.all()[0].giorno
 
-        #form.instance.dia.initial=datetime.now()
+        form.fields['dia'] = forms.DateField(widget=SelectDateWidget(), initial=bomdia)
 
-        #morning = form.getDia()
 
-        #morning.initial=datetime.now()
+
+
 
         return render(request, 'create_task.html', {'form':form})
 
