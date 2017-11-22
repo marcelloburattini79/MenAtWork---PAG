@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block centrale %}
-    <form method="post" enctype="multipart/form-data" action="{% url "crea_task_CUST" %}" >
+    <form method="post" enctype="multipart/form-data" action="{% url "update_task_CUST" pk %}" >
         {% csrf_token %}
         <!-- This line inserts a CSRF token. -->
         <table>

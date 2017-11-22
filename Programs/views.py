@@ -149,13 +149,25 @@ def updateAttivita(request, pk):
 
             dia = form.cleaned_data['dia']
 
-            newAttivita = Task.objects.create(descrizione=descrizione,
-                               oraArrivo=oraArrivo,
-                               cliente=cliente,
-                               riferimentoCommessa=riferimentoCommessa,
-                               note=note,
-                               offerta=offerta,
-                                               )
+            if pk=='0':
+                newAttivita = Task(descrizione=descrizione,
+                                   oraArrivo=oraArrivo,
+                                   cliente=cliente,
+                                   riferimentoCommessa=riferimentoCommessa,
+                                   note=note,
+                                   offerta=offerta,
+                                                   )
+
+            else:
+                newAttivita = Task.objects.get(id=pk)
+
+            newAttivita.descrizione = descrizione
+            newAttivita.oraArrivo=oraArrivo
+            newAttivita.cliente=cliente
+            newAttivita.riferimentoCommessa=riferimentoCommessa
+            newAttivita.note=note
+            newAttivita.offerta=offerta
+
             for tecnicos in tecnici:
                 newAttivita.tecnici.add(tecnicos)
 
@@ -173,18 +185,13 @@ def updateAttivita(request, pk):
     else:
         attivita = Task.objects.get(id=pk)
 
-
         form = Form_TaskMF(instance=attivita)
 
         bomdia = form.instance.giorno.all()[0].giorno
 
         form.fields['dia'] = forms.DateField(widget=SelectDateWidget(), initial=bomdia)
 
-
-
-
-
-        return render(request, 'create_task.html', {'form':form})
+        return render(request, 'create_task.html', {'form':form, 'pk':pk})
 
 def taskDettagli(request, pk):
 
@@ -193,13 +200,7 @@ def taskDettagli(request, pk):
     attivita = attivitaCheck.get()
 
 def provaDownLoad(request, pk):
-    '''
-    fh = open(os.path.join(MenAtWork.settings.BASE_DIR, 'offerte\\27.10.1713.pdf'), 'r')
 
-    response = HttpResponse(fh.read(), content_type="application/pdf")
-    response['Content-Disposition'] = 'attachment; filename=27.10.1713.pdf'
-    return response
-    '''
 
     attivita = Task.objects.get(id=pk)
 
@@ -214,12 +215,6 @@ def provaDownLoad(request, pk):
     f.close()
 
     return response
-
-
-
-
-
-
 
 
 
