@@ -127,11 +127,12 @@ class Form_TaskMF(forms.ModelForm):
 
         model = Task
 
-        exclude = ('',) #Questa variabile specifica i campi del model che vanno riportati nella Form
+        exclude = ('giorno',) #Questa variabile specifica i campi del model che vanno riportati nella Form
 
         widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
 
 def updateAttivita(request, pk):
+
 
     if request.POST:
         form = Form_TaskMF(request.POST, request.FILES)
@@ -150,13 +151,13 @@ def updateAttivita(request, pk):
             dia = form.cleaned_data['dia']
 
             if pk=='0':
-                newAttivita = Task(descrizione=descrizione,
-                                   oraArrivo=oraArrivo,
-                                   cliente=cliente,
-                                   riferimentoCommessa=riferimentoCommessa,
-                                   note=note,
-                                   offerta=offerta,
-                                                   )
+                newAttivita = Task.objects.create(descrizione=descrizione,
+                               oraArrivo=oraArrivo,
+                               cliente=cliente,
+                               riferimentoCommessa=riferimentoCommessa,
+                               note=note,
+                               offerta=offerta,
+                                               )
 
             else:
                 newAttivita = Task.objects.get(id=pk)
@@ -183,15 +184,23 @@ def updateAttivita(request, pk):
             return HttpResponse('Fallito?!?')
 
     else:
-        attivita = Task.objects.get(id=pk)
 
-        form = Form_TaskMF(instance=attivita)
+        if pk == '0':
+            form = Form_TaskMF
 
-        bomdia = form.instance.giorno.all()[0].giorno
+            return render(request, 'create_task.html', {'form': form, 'pk': pk})
 
-        form.fields['dia'] = forms.DateField(widget=SelectDateWidget(), initial=bomdia)
+        else:
 
-        return render(request, 'create_task.html', {'form':form, 'pk':pk})
+            attivita = Task.objects.get(id=pk)
+
+            form = Form_TaskMF(instance=attivita)
+
+            bomdia = form.instance.giorno.all()[0].giorno
+
+            form.fields['dia'] = forms.DateField(widget=SelectDateWidget(), initial=bomdia)
+
+            return render(request, 'create_task.html', {'form':form, 'pk':pk})
 
 def taskDettagli(request, pk):
 
