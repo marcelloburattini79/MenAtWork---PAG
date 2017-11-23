@@ -1,18 +1,18 @@
-from django.shortcuts import render
-from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo
+from django.shortcuts import render, redirect
+from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo, Utente
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from math import ceil
 from django import forms
-from django.http import  HttpResponse, HttpResponseRedirect
+from django.http import  HttpResponse
 import os
 import MenAtWork.settings
 from django.core.files import File
 from django.forms import Textarea
-from django.contrib.admin.widgets import AdminDateWidget
-from django.forms.fields import DateField
 from django.forms.extras.widgets import SelectDateWidget
 from django.utils import timezone
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -24,6 +24,7 @@ def home(request):
     return render(request, 'home.html',
                     {'inizio':inizio})
 
+@login_required()
 def listaTaskPGN(request):
 
     listaGiorniLS = list(Giorno.objects.all())
@@ -116,23 +117,21 @@ def creaAttivita(request):
         return render(request, 'create_task.html', {'form':form})
 
 class Form_TaskMF(forms.ModelForm):
-    #from_date = forms.DateField(widget=AdminDateWidget())
 
     dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
-
-    def getDia(self):
-        return self.instance.dia
 
     class Meta:
 
         model = Task
 
-        exclude = ('giorno',) #Questa variabile specifica i campi del model che vanno riportati nella Form
+        exclude = ('giorno',) #Questa variabile specifica i campi del model che non vanno riportati nella Form
 
         widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
 
 def updateAttivita(request, pk):
-
+    # Questa view si occupa sia della modfica di un task che della creazione
+    # Viene gestito tramite il parametro pk che viene passato
+    # Se pk =='0' -> creazione altrimenti modifica
 
     if request.POST:
         form = Form_TaskMF(request.POST, request.FILES)
@@ -202,14 +201,7 @@ def updateAttivita(request, pk):
 
             return render(request, 'create_task.html', {'form':form, 'pk':pk})
 
-def taskDettagli(request, pk):
-
-    attivitaCheck = Task.objects.filter(id = pk)
-
-    attivita = attivitaCheck.get()
-
 def provaDownLoad(request, pk):
-
 
     attivita = Task.objects.get(id=pk)
 
@@ -225,28 +217,56 @@ def provaDownLoad(request, pk):
 
     return response
 
+class Form_connection(forms.Form):
 
 
-def creaAttivitaMF(request):
+    username = forms.CharField(label="Login")
+    password = forms.CharField(label="Password", widget=forms.PasswordInput)
 
-    if len(request.POST)> 0:
 
-        form = Form_TaskMF(request.POST, request.FILES)
+    def clean(self):
+        cleaned_data = super(Form_connection, self).clean()
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
 
-        if form.is_valid:
+        if not authenticate(username=username, password=password):
+            raise forms.ValidationError("Wrong login or password")
 
-            form.save(commit=True)
+        return self.cleaned_data
 
-            form.giorno = form.cleaned_data['dia']
 
-            form.save()
+def entra(request):
 
-            return HttpResponseRedirect('listaTaskPGN')
+    if request.POST:
+        form = Form_connection(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(username=username, password=password)
+
+            if user:
+                login(request, user)
+
+                if request.GET.get('next') is not None:
+                    return redirect(request.GET['next'])
+
+                else:
+                    return render(request, 'connection.html', {'form': form,
+                                                           'user': user})
+
+            else:
+                return render(request, 'connection.html', {'form': form,
+                                                           'user':user})
 
         else:
-            return HttpResponse('Form non vallido')
+            return render(request, 'connection.html', {'form': form})
 
     else:
-        form = Form_TaskMF()
+        form = Form_connection()
+        return render(request, 'connection.html', {'form': form})
 
-        return render(request, 'create_taskMF.html', {'form':form})
+def esci(request):
+    logout(request)
+    return render(request, 'disconnesso.html')
