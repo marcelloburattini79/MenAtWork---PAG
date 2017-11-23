@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
 
 {% block title_html %}
     Tasks list
@@ -13,19 +14,25 @@
 
 {% block centrale %}
 
-    <div class="pagination">
+<div class="pagination">
     <span class="step-links">
         {% if giorni.has_previous %}
-            <a href="?page={{ giorni.previous_page_number }}">previous</a>
+            <a href="?page={{ giorni.previous_page_number }}">
+                <img src=" {% static "image/indietroRot.png" %}" alt="My image" width="25" height="25">
+            </a>
         {% endif %}
-
+        <!--
         <span class="current">
             Page {{ giorni.number }} of {{ giorni.paginator.num_pages }}.
         </span>
-
+        -->
         {% if giorni.has_next %}
-            <a href="?page={{ giorni.next_page_number }}">next</a>
+            <a href="?page={{ giorni.next_page_number }}">
+            <img src=" {% static "image/avantiRot.png" %}" alt="My image" width="25" height="25">
+            </a>
         {% endif %}
+
+
     </span>
 </div>
 
