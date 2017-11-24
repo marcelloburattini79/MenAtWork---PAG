@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block centrale %}
+    {% if user.is_authenticated %}
+
+        <h1>Benvenuto {{ user.username }}</h1>
+
+        <h3>You are connected.</h3>
+
+    {% else %}
+
+        <h1>Connexion</h1>
+
+        <form method="post" action="{% url "entra" %}">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        <input type="submit" class="button" value="Connection" />
+        </form>
+
+    {% endif %}
+
+{% endblock %}
