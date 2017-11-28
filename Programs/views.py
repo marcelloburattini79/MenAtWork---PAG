@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo
+from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo, Utente
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from math import ceil
@@ -12,7 +12,7 @@ from django.forms import Textarea
 from django.forms.extras.widgets import SelectDateWidget
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Create your views here.
 
@@ -70,6 +70,7 @@ class Form_attivita(forms.Form):
 
     dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
 
+@user_passes_test(lambda u: u is Tecnico, login_url='home')
 def creaAttivita(request):
 
     if request.POST:
@@ -125,6 +126,7 @@ class Form_TaskMF(forms.ModelForm):
 
         widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
 
+@user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='home')
 def updateAttivita(request, pk):
     # Questa view si occupa sia della modfica di un task che della creazione
     # Viene gestito tramite il parametro pk che viene passato
