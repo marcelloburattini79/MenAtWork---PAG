@@ -73,6 +73,8 @@
 
                     <th>Note</th>
 
+                    <th>Documenti</th>
+
                 </thead>
 
                 {% for task in day.attivita.all%}
@@ -96,6 +98,16 @@
                     <td> {{ task.riferimentoCommessa }} </td>
 
                     <td> {{ task.note }} <div class = container> <a href="{% url "download" task.id %} ">Scarica!</a> </div></td>
+
+                    <td>
+                        {%  if task.offerta != None%}
+                        <span> <a href="{% url "download" task.id %} "> <img src=" {% static "image/handshake24.png" %}" alt="My image" width="24" height="24"> </a></span>
+                        {% endif %}
+
+                        <span></span>
+
+                        <span></span>
+                    </td>
 
                 </tr>
 
