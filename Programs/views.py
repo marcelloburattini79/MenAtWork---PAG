@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo, Utente
+from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from math import ceil
@@ -14,9 +14,6 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-
-
-
 # Create your views here.
 
 def home(request):
@@ -24,7 +21,7 @@ def home(request):
     return render(request, 'home.html',
                     {'inizio':inizio})
 
-@login_required()
+@login_required
 def listaTaskPGN(request):
 
     listaGiorniLS = list(Giorno.objects.all())
