@@ -218,10 +218,8 @@ def provaDownLoad(request, pk):
 
 class Form_connection(forms.Form):
 
-
     username = forms.CharField(label="Login")
     password = forms.CharField(label="Password", widget=forms.PasswordInput)
-
 
     def clean(self):
         cleaned_data = super(Form_connection, self).clean()

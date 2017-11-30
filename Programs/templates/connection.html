@@ -13,10 +13,18 @@
 
         <form method="post" action="{{ entra }}">
         {% csrf_token %}
-        <table>
-        {{ form.as_table }}
-        </table>
-        <input type="submit" class="button" value="Connection" />
+
+        <div class="form-group">
+
+            <label for="exampleInputEmail1">Login</label>
+
+
+            <table>
+            {{ form.as_table }}
+            </table>
+
+        <input type="submit" class="btn btn-primary" value="Connection" />
+        </div>
         </form>
 
     {% endif %}
