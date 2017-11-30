@@ -10,23 +10,24 @@
     {% else %}
 
         <h1>Connexion</h1>
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form method="post" class="form-signin" action="{{ entra }}">
+            {% csrf_token %}
+            <span id="reauth-email" class="reauth-email"></span>
+            {% for field in form.visible_fields %}
 
-        <form method="post" action="{{ entra }}">
-        {% csrf_token %}
+                <label> {{ field.label_tag }} </label>
+                {{ field }}
 
-        <div class="form-group">
-
-            <label for="exampleInputEmail1">Login</label>
+            {% endfor %}
 
 
-            <table>
-            {{ form.as_table }}
-            </table>
+            <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="Sign In" />
 
-        <input type="submit" class="btn btn-primary" value="Connection" />
-        </div>
         </form>
-
+        </div>
     {% endif %}
 
 {% endblock %}
