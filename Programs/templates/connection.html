@@ -10,14 +10,21 @@
     {% else %}
 
         <h1>Connexion</h1>
-
+    <div class="container">
         <form method="post" action="{{ entra }}">
         {% csrf_token %}
         <table>
-        {{ form.as_table }}
+            {% for field in form.visible_fields %}
+              <div class="field">
+                <label class="label">{{ field.label_tag }}</label>
+
+                <div class="control">{{ field }}</div>
+              </div>
+            {% endfor %}
         </table>
         <input type="submit" class="button" value="Connection" />
         </form>
+    </div>
 
     {% endif %}
 

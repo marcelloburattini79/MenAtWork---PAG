@@ -6,3 +6,15 @@
     text-align: center;
     vertical-align: middle;
 }
+
+.form-control{
+    background-color: #fff;
+}
+
+#prova{
+    background-color: green;
+}
+
+label{
+    font-weight: normal;
+}

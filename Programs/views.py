@@ -216,11 +216,26 @@ def provaDownLoad(request, pk):
 
     return response
 
+
 class Form_connection(forms.Form):
 
 
-    username = forms.CharField(label="Login")
-    password = forms.CharField(label="Password", widget=forms.PasswordInput)
+    username = forms.CharField(label="Login",
+                               widget=forms.TextInput(
+                                   attrs={
+                                       'class' :'input',
+                                       'id' : 'exampleInputEmail1',
+                                       'placeholder' : 'Inserisci...'
+                                   }
+
+                               ))
+
+    password = forms.CharField(label="Password",
+                               widget=forms.PasswordInput(
+                                   attrs={
+                                       'class': 'form-control'
+                                   }
+                               ))
 
 
     def clean(self):
@@ -232,7 +247,6 @@ class Form_connection(forms.Form):
             raise forms.ValidationError("Wrong login or password")
 
         return self.cleaned_data
-
 
 def entra(request):
 
