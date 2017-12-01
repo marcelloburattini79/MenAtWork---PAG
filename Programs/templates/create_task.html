@@ -10,25 +10,22 @@
 
 {% block centrale %}
 
-    <div class="row">
-        <div class="col-sm-offset-4 col-sm-4">
+ <div class="card taskInput">
+                <form method="post" enctype="multipart/form-data" action="{% url "update_task_CUST" pk %}" >
+                    {% csrf_token %}
+                    <!-- This line inserts a CSRF token. -->
+                    <div class="form-group">
+                    {% for field in form.visible_fields %}
 
-            <form method="post" enctype="multipart/form-data" action="{% url "update_task_CUST" pk %}" >
-                {% csrf_token %}
-                <!-- This line inserts a CSRF token. -->
-                <div class="form-group">
-                {% for field in form.visible_fields %}
+                        <label> {{ field.label_tag }} </label>
 
-                    <label> {{ field.label_tag }} </label>
-
-                    <div class="input-group">
-                        {{ field }}
+                        <div class="input-group">
+                            {{ field }}
+                        </div>
+                    {% endfor %}
                     </div>
-                {% endfor %}
-                </div>
-                <p><input type="submit" value="Create" /></p>
-            </form>
-        </div>
-    </div>
+                    <p><input type="submit" value="Create" /></p>
+                </form>
+ </div>
 
 {% endblock %}
