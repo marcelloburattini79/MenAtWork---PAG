@@ -124,7 +124,11 @@ class Form_TaskMF(forms.ModelForm):
 
         exclude = ('giorno',) #Questa variabile specifica i campi del model che non vanno riportati nella Form
 
-        widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),}
+        widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),
+                   'descrizione': forms.TextInput(attrs={
+                       'class':'form-control',
+                       'id':'validate-text'
+                   })}
 
 @user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='home')
 def updateAttivita(request, pk):

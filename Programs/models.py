@@ -25,7 +25,8 @@ class Tecnico(Utente):
 
 class Amministrativo(Utente):
 
-    pass
+    def __str__(self):
+        return self.user_auth.last_name
 
 class Cliente(models.Model):
 
