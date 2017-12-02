@@ -117,6 +117,8 @@ def creaAttivita(request):
         return render(request, 'create_task.html', {'form':form})
 
 
+#------UPDATE/CREATE TASK-----------------------------------------------------------------------------------------------
+
 class Form_TaskMF(forms.ModelForm):
 
     dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
@@ -143,10 +145,15 @@ class Form_TaskMF(forms.ModelForm):
 
 def validate_username(request):
     username = request.GET.get('username', None)
+
+    listaFiltrata=Cliente.objects.filter(RagioneSociale=username)
+
+    listaFiltrata = list(listaFiltrata)
+
     data = {
-        'is_taken': Cliente.objects.filter(RagioneSociale=username).exists()
+
     }
-    return JsonResponse(data)
+    return JsonResponse(listaFiltrata, safe=False)
 
 @user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='home')
 def updateAttivita(request, pk):
@@ -222,21 +229,9 @@ def updateAttivita(request, pk):
 
             return render(request, 'create_task.html', {'form':form, 'pk':pk})
 
-def provaDownLoad(request, pk):
 
-    attivita = Task.objects.get(id=pk)
 
-    path_to_file = (os.path.join(MenAtWork.settings.BASE_DIR, '', attivita.offerta.name))
-    f = open(path_to_file, 'rb')
-    myfile = File(f)
-    response = HttpResponse(myfile, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename=' + attivita.offerta.name
-
-    myfile.close()
-
-    f.close()
-
-    return response
+#-------LOGIN/LOGOUT----------------------------------------------------------------------------------------------------
 
 class Form_connection(forms.Form):
 
@@ -269,7 +264,6 @@ class Form_connection(forms.Form):
             raise forms.ValidationError("Wrong login or password")
 
         return self.cleaned_data
-
 
 def entra(request):
 
@@ -306,3 +300,23 @@ def entra(request):
 def esci(request):
     logout(request)
     return render(request, 'disconnesso.html')
+
+
+
+#---------TEST----------------------------------------------------------------------------------------------------------
+
+def provaDownLoad(request, pk):
+
+    attivita = Task.objects.get(id=pk)
+
+    path_to_file = (os.path.join(MenAtWork.settings.BASE_DIR, '', attivita.offerta.name))
+    f = open(path_to_file, 'rb')
+    myfile = File(f)
+    response = HttpResponse(myfile, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=' + attivita.offerta.name
+
+    myfile.close()
+
+    f.close()
+
+    return response
