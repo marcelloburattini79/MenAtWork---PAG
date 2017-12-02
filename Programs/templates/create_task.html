@@ -8,7 +8,34 @@
     Create Task
 {% endblock %}
 
+{% block javascript%}
+
+    <script>
+    $("#validate-text").change(function () {
+      console.log( $(this).val() );
+      var username = $(this).val();
+
+        $.ajax({
+        url: '/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("A user with this username already exists.");
+          }
+        }
+      });
+
+    });
+    </script>
+
+{% endblock %}
+
 {% block centrale %}
+
+
 
  <div class="card taskInput">
                 <form method="post" enctype="multipart/form-data" action="{% url "update_task_CUST" pk %}" >

@@ -16,4 +16,7 @@ urlpatterns = [
     url(r'^connection$', views.entra, name="entra"),
 
     url(r'^disconnection$', views.esci, name="disconnesso"),
+
+    url(r'^ajax/validate_username/$', views.validate_username, name='validate_username'),
+
 ]

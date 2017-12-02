@@ -4,7 +4,7 @@ from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from math import ceil
 from django import forms
-from django.http import  HttpResponse
+from django.http import  HttpResponse, JsonResponse
 import os
 import MenAtWork.settings
 from django.core.files import File
@@ -13,7 +13,7 @@ from django.forms.extras.widgets import SelectDateWidget
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
-from searchableselect.widgets import SearchableSelect
+
 
 
 # Create your views here.
@@ -116,6 +116,7 @@ def creaAttivita(request):
         form = Form_attivita()
         return render(request, 'create_task.html', {'form':form})
 
+
 class Form_TaskMF(forms.ModelForm):
 
     dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
@@ -139,6 +140,13 @@ class Form_TaskMF(forms.ModelForm):
                    }),
 
                    }
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    data = {
+        'is_taken': Cliente.objects.filter(RagioneSociale=username).exists()
+    }
+    return JsonResponse(data)
 
 @user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='home')
 def updateAttivita(request, pk):
