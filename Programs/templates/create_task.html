@@ -21,12 +21,21 @@
           'username': username
         },
         dataType: 'json',
-        success: function (data) {
-            alert(data.listaFiltrata[0]);
+        success: function (results) {
+            alert(results);
         }
       });
 
+        $('.selectpicker').selectpicker({
+          style: 'btn-info',
+          size: 4
+           });
+
     });
+
+    $('.chosen-select').chosen();
+
+
     </script>
 
 {% endblock %}
@@ -49,6 +58,14 @@
                         </div>
                     {% endfor %}
                     </div>
+
+                    <select class="chosen-select">
+                        <option>Zardes</option>
+                        <option>Canini</option>
+                        <option>Raggi</option>
+                        <option>Garcia</option>
+                    </select>
+
                     <p><input type="submit" value="Create" /></p>
                 </form>
  </div>

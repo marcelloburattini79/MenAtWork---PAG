@@ -141,19 +141,23 @@ class Form_TaskMF(forms.ModelForm):
                        'id': 'validate-text'
                    }),
 
+                   'cliente':forms.Select(attrs={'class':'chosen-select',}),
+
                    }
 
 def validate_username(request):
     username = request.GET.get('username', None)
 
-    listaFiltrata=Cliente.objects.filter(RagioneSociale=username)
 
-    listaFiltrata = list(listaFiltrata)
+    listaFiltrata=Cliente.objects.filter(RagioneSociale__contains=username)
 
-    data = {
+    results = []
 
-    }
-    return JsonResponse(listaFiltrata, safe=False)
+    for clients in listaFiltrata:
+
+        results.append(clients.RagioneSociale)
+
+    return JsonResponse(results, safe=False)
 
 @user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='home')
 def updateAttivita(request, pk):
