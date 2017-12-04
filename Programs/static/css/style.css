@@ -65,6 +65,7 @@ label{
     -webkit-user-select: none;
     user-select: none;
     cursor: default;
+    margin-left: 15px;
 }
 
 

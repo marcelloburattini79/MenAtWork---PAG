@@ -121,7 +121,8 @@ def creaAttivita(request):
 
 class Form_TaskMF(forms.ModelForm):
 
-    dia = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
+    dia = forms.DateField(widget=SelectDateWidget(attrs={'class':'form-control'}),
+                          initial=timezone.now())
 
     class Meta:
 
@@ -129,7 +130,8 @@ class Form_TaskMF(forms.ModelForm):
 
         exclude = ('giorno',) #Questa variabile specifica i campi del model che non vanno riportati nella Form
 
-        widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 8}),
+        widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 2,
+                                            'class':'form-control'}),
 
                    'descrizione': forms.TextInput(attrs={
                        'class':'form-control',
@@ -142,6 +144,12 @@ class Form_TaskMF(forms.ModelForm):
                    }),
 
                    'cliente':forms.Select(attrs={'class':'chosen-select',}),
+
+                   'tecnici':forms.Select(attrs={'class':'chosen-select', 'multiple':'True'}),
+
+                   'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),
+
+                   'offerta':forms.ClearableFileInput(attrs={'class':'form-control',})
 
                    }
 
@@ -229,7 +237,8 @@ def updateAttivita(request, pk):
 
             bomdia = form.instance.giorno.all()[0].giorno
 
-            form.fields['dia'] = forms.DateField(widget=SelectDateWidget(), initial=bomdia)
+            form.fields['dia'] = forms.DateField(widget=SelectDateWidget
+            (attrs={'class':'form-control'}), initial=bomdia)
 
             return render(request, 'create_task.html', {'form':form, 'pk':pk})
 

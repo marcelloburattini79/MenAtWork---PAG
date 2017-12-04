@@ -53,20 +53,22 @@
 
                         <label> {{ field.label_tag }} </label>
 
-                        <div class="input-group">
-                            {{ field }}
+                        {% if field.name == 'dia' %}
+                            <div class="input-group">
+                                {{ field }}
+                            </div>
+
+                        {% else %}
+                        <div>
+                                {{ field }}
                         </div>
+                        {% endif %}
                     {% endfor %}
                     </div>
 
-                    <select class="chosen-select">
-                        <option>Zardes</option>
-                        <option>Canini</option>
-                        <option>Raggi</option>
-                        <option>Garcia</option>
-                    </select>
+                    <span><input type="submit" class="btn btn-primary float-right" value="Conferma" /></span>
 
-                    <p><input type="submit" value="Create" /></p>
+                    <span><input type="button" class="btn btn-danger float-right" value="Annulla" /></span>
                 </form>
  </div>
 
