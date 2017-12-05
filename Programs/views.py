@@ -124,13 +124,17 @@ class Form_TaskMF(forms.ModelForm):
     dia = forms.DateField(widget=SelectDateWidget(attrs={'class':'form-control'}),
                           initial=timezone.now())
 
-
+    trabajador = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
+                                                required=False,
+                                                widget= forms.SelectMultiple(attrs={
+                                                'class':'chosen-select'
+                                                }))
 
     class Meta:
 
         model = Task
 
-        exclude = ('giorno',) #Questa variabile specifica i campi del model che non vanno riportati nella Form
+        exclude = ('giorno', 'tecnici') #Questa variabile specifica i campi del model che non vanno riportati nella Form
 
         widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 2,
                                             'class':'form-control'}),
@@ -146,17 +150,16 @@ class Form_TaskMF(forms.ModelForm):
                        'id': 'validate-text'
                    }),
 
+                    'tecnici': forms.SelectMultiple(),
+
                    'cliente':forms.Select(attrs={'class':'chosen-select',}),
 
+                    'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),
 
-                   'tecnici':forms.Select(attrs={'class':'form-control', }),}
-'''
-                    'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),}
-
-                   'offerta':forms.ClearableFileInput(attrs={'class':'form-control',})
+                    'offerta':forms.ClearableFileInput(attrs={'class':'form-control',})
 
                    }
-'''
+
 def validate_username(request):
     username = request.GET.get('username', None)
 
@@ -185,13 +188,14 @@ def updateAttivita(request, pk):
             descrizione = form.cleaned_data['descrizione']
             oraArrivo = form.cleaned_data['oraArrivo']
             cliente = form.cleaned_data['cliente']
-            tecnici = form.cleaned_data['tecnici']
             riferimentoCommessa = form.cleaned_data['riferimentoCommessa']
             note = form.cleaned_data['note']
 
             offerta = form.cleaned_data['offerta']
 
             dia = form.cleaned_data['dia']
+
+            trabajador = form.cleaned_data['trabajador']
 
             if pk=='0':
                 newAttivita = Task.objects.create(descrizione=descrizione,
@@ -212,8 +216,12 @@ def updateAttivita(request, pk):
             newAttivita.note=note
             newAttivita.offerta=offerta
 
-            for tecnicos in tecnici:
-                newAttivita.tecnici.add(tecnicos)
+            newAttivita.tecnici.clear()
+
+            if trabajador:
+                for tecnicos in trabajador:
+                    newAttivita.tecnici.add(tecnicos)
+
 
 
             giorno = Giorno.objects.get(giorno=dia)
@@ -243,6 +251,16 @@ def updateAttivita(request, pk):
 
             form.fields['dia'] = forms.DateField(widget=SelectDateWidget
             (attrs={'class':'form-control'}), initial=bomdia)
+
+
+            bonTrabajador = form.instance.tecnici.all()
+
+            form.fields['trabajador'] = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
+                                                                       initial=bonTrabajador,
+                                                                       required=False,
+                                                                        widget= forms.SelectMultiple(attrs={
+                                                                        'class':'chosen-select'
+                                                                        }))
 
             return render(request, 'create_task.html', {'form':form, 'pk':pk})
 

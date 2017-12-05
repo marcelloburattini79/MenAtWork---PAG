@@ -112,7 +112,7 @@ class Task(models.Model):
     cliente = models.ForeignKey(Cliente, verbose_name="Cliente", default=None)
 
     tecnici = models.ManyToManyField(Tecnico, verbose_name='Tecnici', related_name='taskAssegnati',
-                                    blank=True,)
+                                    blank=True, null=True, default=None)
 
     riferimentoCommessa = models.ForeignKey(Amministrativo, verbose_name='Riferimento commessa', default=None)
 
