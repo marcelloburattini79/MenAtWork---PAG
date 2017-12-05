@@ -124,6 +124,8 @@ class Form_TaskMF(forms.ModelForm):
     dia = forms.DateField(widget=SelectDateWidget(attrs={'class':'form-control'}),
                           initial=timezone.now())
 
+
+
     class Meta:
 
         model = Task
@@ -138,6 +140,7 @@ class Form_TaskMF(forms.ModelForm):
                        'id':'validate-text'
                    }),
 
+
                    'oraArrivo': forms.TextInput(attrs={
                        'class': 'form-control',
                        'id': 'validate-text'
@@ -145,14 +148,15 @@ class Form_TaskMF(forms.ModelForm):
 
                    'cliente':forms.Select(attrs={'class':'chosen-select',}),
 
-                   'tecnici':forms.Select(attrs={'class':'chosen-select', 'multiple':'True'}),
 
-                   'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),
+                   'tecnici':forms.Select(attrs={'class':'chosen-select', 'multiple':'True'}),}
+'''
+                    'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),}
 
                    'offerta':forms.ClearableFileInput(attrs={'class':'form-control',})
 
                    }
-
+'''
 def validate_username(request):
     username = request.GET.get('username', None)
 
