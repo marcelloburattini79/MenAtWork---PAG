@@ -149,7 +149,7 @@ class Form_TaskMF(forms.ModelForm):
                    'cliente':forms.Select(attrs={'class':'chosen-select',}),
 
 
-                   'tecnici':forms.Select(attrs={'class':'chosen-select', 'multiple':'True'}),}
+                   'tecnici':forms.Select(attrs={'class':'form-control', }),}
 '''
                     'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),}
 
