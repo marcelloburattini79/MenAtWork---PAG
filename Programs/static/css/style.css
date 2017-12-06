@@ -1,10 +1,31 @@
+
+
 body{
     background-color: #e2edf6;
+}
+
+.display-3{
+    color: white;
+}
+
+.lead{
+    color: white;
 }
 
 .navbar-custom {
     color: #FFFFFF;
     background-color: rgb(104, 145, 162);
+}
+
+.entra{
+    margin: 0 auto;
+
+    width: 100%;
+
+    text-align: center;
+
+    Font-size: 2em;
+
 }
 
 .titolo{
