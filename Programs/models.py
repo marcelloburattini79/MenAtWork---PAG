@@ -118,7 +118,7 @@ class Task(models.Model):
 
     note = models.TextField(verbose_name='Note', null = True, blank=True, default=None, )
 
-    offerta = models.FileField(upload_to='offerte', verbose_name = 'Offerta', null = True, blank=True)
+    offerta = models.FileField(upload_to='offerte', verbose_name = 'Offerta', null = True, blank=True, default=None)
 
     giorno = models.ManyToManyField(Giorno, verbose_name='Data', related_name='attivita',)
 

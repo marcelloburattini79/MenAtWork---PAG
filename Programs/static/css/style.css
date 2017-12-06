@@ -189,3 +189,7 @@ label{
 .taskInput{
     width: 50%;
 }
+
+.chosen-container{
+    width: 100px;
+}

@@ -98,7 +98,7 @@
                     <td class="scope"> {{ task.note }} </td>
 
                     <td class="scope">
-                        {%  if task.offerta %}
+                        {%  if task.offerta and not task.offerta.name == 'False'%}
                             <span> <a href="{% url "download" task.id %} "> <img src=" {% static "image/handshake24.png" %}"
                                                                                  alt="My image" width="24" height="24"> </a></span>
                         {% endif %}

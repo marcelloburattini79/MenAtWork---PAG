@@ -150,8 +150,6 @@ class Form_TaskMF(forms.ModelForm):
                        'id': 'validate-text'
                    }),
 
-                    'tecnici': forms.SelectMultiple(),
-
                    'cliente':forms.Select(attrs={'class':'chosen-select',}),
 
                     'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),
