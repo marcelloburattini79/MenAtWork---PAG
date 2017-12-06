@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Benvenuto!</title>
-</head>
-<body>
-<a href="{% url "listaTaskPGN" %}">Benvenuti!!</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title_html %}
+    Tasks list
+{% endblock %}
+
+{% block centrale %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Programma lavori esterni</h1>
+    <p class="lead"> Modulo MPG Chim 12-03. Rev.2 del 02.05.13 </p>
+  </div>
+</div>
+
+{% endblock %}

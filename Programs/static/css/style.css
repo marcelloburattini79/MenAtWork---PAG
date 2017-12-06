@@ -7,7 +7,14 @@ body{
     background-color: rgb(104, 145, 162);
 }
 
+.titolo{
+    font-family: "Skippy Sharpie";
+    font-size: 3em;
+    color: red;
+    margin: auto;
+    width: 100%;
 
+}
 
 .thead-dark{
     text-align: center;
