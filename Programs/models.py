@@ -120,6 +120,10 @@ class Task(models.Model):
 
     offerta = models.FileField(upload_to='offerte', verbose_name = 'Offerta', null = True, blank=True, default=None)
 
+    ordineServizio = models.FileField(upload_to='ordineServizio', verbose_name = 'Ordine di servizio', null = True, blank=True, default=None)
+
+    pianoCampionamento =models.FileField(upload_to='pianiCampionamento', verbose_name = 'Piani di campionamento', null = True, blank=True, default=None)
+
     giorno = models.ManyToManyField(Giorno, verbose_name='Data', related_name='attivita',)
 
 

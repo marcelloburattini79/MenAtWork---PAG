@@ -188,6 +188,8 @@ def updateAttivita(request, pk):
             cliente = form.cleaned_data['cliente']
             riferimentoCommessa = form.cleaned_data['riferimentoCommessa']
             note = form.cleaned_data['note']
+            pianoC = form.cleaned_data['pianoCampionamento']
+            ordineS = form.cleaned_data['ordineServizio']
 
             offerta = form.cleaned_data['offerta']
 
@@ -212,7 +214,13 @@ def updateAttivita(request, pk):
             newAttivita.cliente=cliente
             newAttivita.riferimentoCommessa=riferimentoCommessa
             newAttivita.note=note
-            newAttivita.offerta=offerta
+
+            if not newAttivita.pianoCampionamento:
+                newAttivita.pianoCampionamento=pianoC
+            if not newAttivita.ordineServizio or ordineS is False:
+                newAttivita.ordineServizio=ordineS
+            if not newAttivita.offerta:
+                newAttivita.offerta=offerta
 
             newAttivita.tecnici.clear()
 
@@ -332,11 +340,11 @@ def entra(request):
 
 def esci(request):
     logout(request)
-    return render(request, 'disconnesso.html')
+    return render(request, 'home.html')
 
 
 
-#---------TEST----------------------------------------------------------------------------------------------------------
+#---------METODI X IL DOWNLOAD----------------------------------------------------------------------------------------------------------
 
 def provaDownLoad(request, pk):
 
@@ -347,6 +355,38 @@ def provaDownLoad(request, pk):
     myfile = File(f)
     response = HttpResponse(myfile, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename=' + attivita.offerta.name
+
+    myfile.close()
+
+    f.close()
+
+    return response
+
+def pianoDL(request, pk):
+
+    attivita = Task.objects.get(id=pk)
+
+    path_to_file = (os.path.join(MenAtWork.settings.BASE_DIR, '', attivita.pianoCampionamento.name))
+    f = open(path_to_file, 'rb')
+    myfile = File(f)
+    response = HttpResponse(myfile, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=' + attivita.pianoCampionamento.name
+
+    myfile.close()
+
+    f.close()
+
+    return response
+
+def ordineDL(request, pk):
+
+    attivita = Task.objects.get(id=pk)
+
+    path_to_file = (os.path.join(MenAtWork.settings.BASE_DIR, '', attivita.ordineServizio.name))
+    f = open(path_to_file, 'rb')
+    myfile = File(f)
+    response = HttpResponse(myfile, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=' + attivita.ordineServizio.name
 
     myfile.close()
 

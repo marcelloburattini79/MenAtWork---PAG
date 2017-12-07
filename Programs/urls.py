@@ -13,6 +13,10 @@ urlpatterns = [
 
     url(r'^download_(?P<pk>\d+)$', views.provaDownLoad, name='download'),
 
+    url(r'^pianoDL_(?P<pk>\d+)$', views.pianoDL, name='pianoDL'),
+
+    url(r'^ordineDL_(?P<pk>\d+)$', views.ordineDL, name='ordineDL'),
+
     url(r'^connection$', views.entra, name="entra"),
 
     url(r'^disconnection$', views.esci, name="disconnesso"),

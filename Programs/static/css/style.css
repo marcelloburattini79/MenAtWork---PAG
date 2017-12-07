@@ -4,6 +4,20 @@ body{
     background-color: #e2edf6;
 }
 
+.nomeUser{
+    font-weight: 600;
+
+    color:white;
+
+    padding-right: 2em;
+
+    padding-bottom: .5em;
+
+    padding-top: .5em;
+
+    display: block;
+}
+
 .display-3{
     color: white;
 }
@@ -29,11 +43,17 @@ body{
 }
 
 .titolo{
-    font-family: "Skippy Sharpie";
-    font-size: 3em;
-    color: red;
-    margin: auto;
+    margin: 0 auto;
+
     width: 100%;
+
+    text-align: center;
+
+    Font-size: 2em;
+
+    background-repeat: no-repeat;
+
+    background-size:100%
 
 }
 
