@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo, Utente
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from math import ceil
 from django import forms
@@ -35,6 +35,18 @@ def listaTaskPGN(request):
     indice = ceil(indice / 7)
 
     paginator = Paginator(listaGiorniLS, 7)
+
+    #---Codice prova-------
+
+    today = date.today()
+
+    last_Monday = today - timedelta(days=today.weekday())
+
+    lunedi = Giorno.objects.get(giorno=last_Monday)
+
+    indiceMon = listaGiorniLS.index(lunedi)
+
+    #---Fine prova
 
     page = request.GET.get('page')
 
@@ -215,11 +227,11 @@ def updateAttivita(request, pk):
             newAttivita.riferimentoCommessa=riferimentoCommessa
             newAttivita.note=note
 
-            if not newAttivita.pianoCampionamento:
+            if not newAttivita.pianoCampionamento or pianoC is False:
                 newAttivita.pianoCampionamento=pianoC
             if not newAttivita.ordineServizio or ordineS is False:
                 newAttivita.ordineServizio=ordineS
-            if not newAttivita.offerta:
+            if not newAttivita.offerta or offerta is False:
                 newAttivita.offerta=offerta
 
             newAttivita.tecnici.clear()
