@@ -215,11 +215,21 @@ def updateAttivita(request, pk):
             newAttivita.riferimentoCommessa=riferimentoCommessa
             newAttivita.note=note
 
+<<<<<<< HEAD
             if not newAttivita.pianoCampionamento:
                 newAttivita.pianoCampionamento=pianoC
             if not newAttivita.ordineServizio or ordineS is False:
                 newAttivita.ordineServizio=ordineS
             if not newAttivita.offerta:
+=======
+            if not newAttivita.pianoCampionamento or pianoC is False:
+                newAttivita.pianoCampionamento=pianoC
+
+            if not newAttivita.ordineServizio or ordineS is False:
+                newAttivita.ordineServizio=ordineS
+
+            if not newAttivita.offerta or offerta is False:
+>>>>>>> parent of 759c1b9... Merge branch 'master' of https://github.com/marcelloburattini79/MenAtWork---PAG
                 newAttivita.offerta=offerta
 
             newAttivita.tecnici.clear()
