@@ -3,9 +3,9 @@
 {% block centrale %}
     {% if user.is_authenticated %}
 
-        <h1>Benvenuto {{ user.username }}</h1>
-
-        <h3>You are connected.</h3>
+        <script>
+            window.location.href = 'listaTaskPGN';
+        </script>
 
     {% else %}
 

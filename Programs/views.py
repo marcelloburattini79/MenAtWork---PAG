@@ -42,7 +42,7 @@ def listaTaskPGN(request):
         giorni = paginator.page(page)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
-        giorni = paginator.page(indice)
+        giorni = paginator.page(indice + 1)
 
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
@@ -134,7 +134,7 @@ class Form_TaskMF(forms.ModelForm):
 
         model = Task
 
-        exclude = ('giorno', 'tecnici') #Questa variabile specifica i campi del model che non vanno riportati nella Form
+        exclude = ('giorno', 'tecnici', 'riferimentoCommessa') #Questa variabile specifica i campi del model che non vanno riportati nella Form
 
         widgets = {'note' : Textarea(attrs={'cols': 20, 'rows': 2,
                                             'class':'form-control'}),
@@ -172,7 +172,7 @@ def validate_username(request):
 
     return JsonResponse(results, safe=False)
 
-@user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='divieto')
+@user_passes_test(lambda u: u.is_authenticated and Amministrativo.objects.all().filter(user_auth=u).count()>0, login_url='divieto')
 def updateAttivita(request, pk):
     # Questa view si occupa sia della modfica di un task che della creazione
     # Viene gestito tramite il parametro pk che viene passato
@@ -186,7 +186,9 @@ def updateAttivita(request, pk):
             descrizione = form.cleaned_data['descrizione']
             oraArrivo = form.cleaned_data['oraArrivo']
             cliente = form.cleaned_data['cliente']
-            riferimentoCommessa = form.cleaned_data['riferimentoCommessa']
+            #riferimentoCommessa = form.cleaned_data['riferimentoCommessa']
+            #idRC = Amministrativo.objects.all().filter(user_auth=request.user).id
+            riferimentoCommessa = Amministrativo.objects.get(user_auth=request.user)
             note = form.cleaned_data['note']
             pianoC = form.cleaned_data['pianoCampionamento']
             ordineS = form.cleaned_data['ordineServizio']

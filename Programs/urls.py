@@ -7,6 +7,8 @@ urlpatterns = [
     # post views
     url(r'^$', views.home, name="home"),
 
+    url(r'^divieto$', views.divieto, name="divieto"),
+
     url(r'^listaTaskPGN$', views.listaTaskPGN, name='listaTaskPGN'),
 
     url(r'^update_task_CUST_(?P<pk>\d+)$', views.updateAttivita, name='update_task_CUST'),

@@ -7,8 +7,13 @@
 {% endblock %}
 
 {% block MsgPrinc %}
-    STOP
-    <p>L'utente loggato non può compiere quest'azione.</p>
+    PERMESSO NEGATO
+{% endblock %}
+
+{% block underTrack %}
+    Possibili problemi:<br>
+    - L'utente registrato non può compiere quest'azione.<br>
+    - Non è stato registrato alcun utente.
 {% endblock %}
 
 {% block azioneTxt %}
