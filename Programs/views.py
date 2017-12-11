@@ -108,7 +108,7 @@ def creaAttivita(request):
 
             newAttivita.save()
 
-            return HttpResponse('SuperuserNEW creato con successo!')
+            return render(request, 'successo.html')
         else:
             return HttpResponse('Fallito?!?')
 
@@ -172,7 +172,7 @@ def validate_username(request):
 
     return JsonResponse(results, safe=False)
 
-@user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='home')
+@user_passes_test(lambda u: Tecnico.objects.all().filter(user_auth=u).count()>0, login_url='divieto')
 def updateAttivita(request, pk):
     # Questa view si occupa sia della modfica di un task che della creazione
     # Viene gestito tramite il parametro pk che viene passato
@@ -215,21 +215,13 @@ def updateAttivita(request, pk):
             newAttivita.riferimentoCommessa=riferimentoCommessa
             newAttivita.note=note
 
-<<<<<<< HEAD
-            if not newAttivita.pianoCampionamento:
-                newAttivita.pianoCampionamento=pianoC
             if not newAttivita.ordineServizio or ordineS is False:
                 newAttivita.ordineServizio=ordineS
-            if not newAttivita.offerta:
-=======
+
             if not newAttivita.pianoCampionamento or pianoC is False:
                 newAttivita.pianoCampionamento=pianoC
 
-            if not newAttivita.ordineServizio or ordineS is False:
-                newAttivita.ordineServizio=ordineS
-
             if not newAttivita.offerta or offerta is False:
->>>>>>> parent of 759c1b9... Merge branch 'master' of https://github.com/marcelloburattini79/MenAtWork---PAG
                 newAttivita.offerta=offerta
 
             newAttivita.tecnici.clear()
@@ -246,7 +238,7 @@ def updateAttivita(request, pk):
 
             newAttivita.save()
 
-            return HttpResponse('SuperuserNEW creato con successo!')
+            return render(request, 'successo.html')
         else:
             return HttpResponse('Fallito?!?')
 
@@ -280,7 +272,8 @@ def updateAttivita(request, pk):
 
             return render(request, 'create_task.html', {'form':form, 'pk':pk})
 
-
+def divieto(request):
+    return render(request, 'divietoAcc.html')
 
 #-------LOGIN/LOGOUT----------------------------------------------------------------------------------------------------
 

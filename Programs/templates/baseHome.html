@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title_html %}
+    Tasks list
+{% endblock %}
+
+{% block centrale %}
+
+<div class="jumbotron jumbotron-fluid"
+     style="background-image: url({% static "image/jumbotron-background.jpg" %});
+             background-repeat: no-repeat;
+             background-size:100%">
+  <div class="container">
+    <h1 class="display-3">
+        {% block MsgPrinc %}  {% endblock %}
+    </h1>
+    <p class="lead"> Modulo MPG Chim 12-03. Rev.2 del 02.05.13 </p>
+  </div>
+</div>
+
+    <div class="entra">
+
+    <a href="{% url "listaTaskPGN" %}">
+        {% block azioneTxt %}{% endblock %}
+    </a>
+
+
+
+    </div>
+
+{% endblock %}
