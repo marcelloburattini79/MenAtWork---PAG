@@ -172,7 +172,10 @@ def validate_username(request):
 
     return JsonResponse(results, safe=False)
 
-@user_passes_test(lambda u: u.is_authenticated and Amministrativo.objects.all().filter(user_auth=u).count()>0, login_url='divieto')
+@user_passes_test(lambda u:
+                  u.is_authenticated and
+                  u.groups.all()[0] == 'Full',
+                  login_url='divieto')
 def updateAttivita(request, pk):
     # Questa view si occupa sia della modfica di un task che della creazione
     # Viene gestito tramite il parametro pk che viene passato
