@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from Programs.models import Task, Giorno, Cliente, Tecnico, Amministrativo, Utente
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from math import ceil
+from math import floor
 from django import forms
 from django.http import  HttpResponse, JsonResponse
 import os
@@ -32,7 +32,7 @@ def listaTaskPGN(request):
 
     indice = listaGiorniLS.index(oggi)
 
-    indice = ceil(indice / 7)
+    indice = floor(indice / 7)
 
     paginator = Paginator(listaGiorniLS, 7)
 
@@ -42,7 +42,7 @@ def listaTaskPGN(request):
         giorni = paginator.page(page)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
-        giorni = paginator.page(indice + 1)
+        giorni = paginator.page(indice+1)
 
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.

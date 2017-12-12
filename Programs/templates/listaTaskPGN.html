@@ -48,8 +48,12 @@
             {% for day in giorni %}
 
             <tr>
-                <th >
-                    {{ day.giorno }}
+                <th class="scope">
+                    {% if day.giorno.weekday == 5 or day.giorno.weekday == 6 %}
+                    <p style="color:red">{{ day }}</p>
+                    {% else %}
+                    {{ day }}
+                    {% endif %}
                 </th>
 
                 <td>

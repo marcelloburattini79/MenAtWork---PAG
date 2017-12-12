@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import *
 
 # Create your models here.
 
@@ -100,7 +101,25 @@ class Giorno(models.Model):
 
     def __str__(self):
         ToString = "{}"  # 2 {} placeholders
-        return (ToString.format(self.giorno))
+
+        dataStr = self.giorno.strftime("%d/%m")
+
+        if self.giorno.weekday() == 0:
+            return('{} - {}'.format(dataStr, 'Lunedì'))
+        elif self.giorno.weekday() == 1:
+            return ('{} - {}'.format(dataStr, 'Martedì'))
+        elif self.giorno.weekday() == 2:
+            return ('{} - {}'.format(dataStr, 'Mercoledì'))
+        elif self.giorno.weekday() == 3:
+            return ('{} - {}'.format(dataStr, 'Giovedì'))
+        elif self.giorno.weekday() == 4:
+            return ('{} - {}'.format(dataStr, 'Venerdì'))
+        elif self.giorno.weekday() == 5:
+            return ('{} - {}'.format(dataStr, 'Sabato'))
+        elif self.giorno.weekday() == 6:
+            return ('{} - {}'.format(dataStr, 'Domenica'))
+
+
 
 class Task(models.Model):
 
