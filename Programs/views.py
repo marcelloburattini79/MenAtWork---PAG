@@ -174,7 +174,7 @@ def validate_username(request):
 
 @user_passes_test(lambda u:
                   u.is_authenticated and
-                  u.groups.all()[0] == 'Full',
+                  u.groups.filter(name='Full').count() > 0,
                   login_url='divieto')
 def updateAttivita(request, pk):
     # Questa view si occupa sia della modfica di un task che della creazione
