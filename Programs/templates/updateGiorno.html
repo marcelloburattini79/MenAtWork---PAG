@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title_html %}
-    Create Task
+    Personale assente
 {% endblock %}
 
 {% block h1 %}
-    Create Task
+    Personale assente
 {% endblock %}
 
 {% block javascript%}
@@ -23,27 +23,23 @@
 
 
  <div class="card taskInput">
-                <form method="post" enctype="multipart/form-data" action="{% url "update_task_CUST" pk %}" >
+                <form method="post"  action="{% url "update_giorno" pk %}" >
                     {% csrf_token %}
                     <!-- This line inserts a CSRF token. -->
                     <div class="form-group">
+
+                    <h2 class = 'scope'>{{ dia }}</h2>
+
                     {% for field in form.visible_fields %}
 
                         <div class="marginDecor">
 
                         <span> {{ field.label_tag }} </span>
 
-                        {% if field.name == 'dia' %}
-                            <div class="input-group ">
-                                {{ field }}
-                            </div>
-
-                        {% else %}
                             <div>
                                 {{ field }}
                             </div>
 
-                        {% endif %}
                         </div>
                     {% endfor %}
 

@@ -119,8 +119,6 @@ class Giorno(models.Model):
         elif self.giorno.weekday() == 6:
             return ('{} - {}'.format(dataStr, 'Domenica'))
 
-
-
 class Task(models.Model):
 
     descrizione = models.CharField(max_length=2000, verbose_name='descrizione')

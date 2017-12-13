@@ -100,17 +100,17 @@
 
                     <td class="scope">
                         {%  if task.offerta and not task.offerta.name == 'False'%}
-                            <span> <a href="{% url "download" task.id %} "> <img src=" {% static "image/handshake24.png" %}"
+                            <span> <a href="{% url "download" task.id %} "> <img src=" {% static "image/attachment-icon-grigio.png" %}"
                                                                                  alt="My image" width="24" height="24"> </a></span>
                         {% endif %}
 
                         {%  if task.pianoCampionamento and not task.pianoCampionamento.name == 'False'%}
-                            <span> <a href="{% url "pianoDL" task.id %} "> <img src=" {% static "image/Map-Marker-Drawing-Pin-Right-Pink-icon.png" %}"
+                            <span> <a href="{% url "pianoDL" task.id %} "> <img src=" {% static "image/Attachment-icon-viola.png" %}"
                                                                                  alt="My image" width="24" height="24"> </a></span>
                         {% endif %}
 
                         {%  if task.ordineServizio and not task.ordineServizio.name == 'False'%}
-                            <span> <a href="{% url "ordineDL" task.id %} "> <img src=" {% static "image/MarkerGreen.png" %}"
+                            <span> <a href="{% url "ordineDL" task.id %} "> <img src=" {% static "image/attachment-icon-giallo.png" %}"
                                                                                  alt="My image" width="24" height="24"> </a></span>
                         {% endif %}
                     </td>
@@ -125,13 +125,22 @@
                 </td>
 
                  <td class="scope">
+                 <a href="">
 
-
-                        {%  for assenti in day.personaleAssente.all %}
+                 {% if day.personaleAssente.all.count > 0 %}
+                    <a href="{% url "update_giorno" day.id %}">
+                     {%  for assenti in day.personaleAssente.all %}
                             <div> {{ assenti }} </div>
-                        {% endfor %}
-
+                    {% endfor %}
+                    </a>
+                 {% else %}
+                     <a href="{% url "update_giorno" day.id %}">
+                        <img src=" {% static "image/edit-icon.png" %}" alt="My image" width="24" height="24">
+                    </a>
+                 {% endif %}
+                </a>
                 </td>
+
 
             </tr>
 

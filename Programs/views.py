@@ -124,7 +124,7 @@ class Form_TaskMF(forms.ModelForm):
     dia = forms.DateField(widget=SelectDateWidget(attrs={'class':'form-control'}),
                           initial=timezone.now())
 
-    trabajador = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
+    tecnici = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
                                                 required=False,
                                                 widget= forms.SelectMultiple(attrs={
                                                 'class':'chosen-select'
@@ -141,20 +141,15 @@ class Form_TaskMF(forms.ModelForm):
 
                    'descrizione': forms.TextInput(attrs={
                        'class':'form-control',
-                       'id':'validate-text'
                    }),
-
 
                    'oraArrivo': forms.TextInput(attrs={
                        'class': 'form-control',
-                       'id': 'validate-text'
+
                    }),
 
                    'cliente':forms.Select(attrs={'class':'chosen-select',}),
 
-                    'riferimentoCommessa': forms.Select(attrs={'class': 'chosen-select', }),
-
-                    'offerta':forms.ClearableFileInput(attrs={'class':'form-control',})
 
                    }
 
@@ -189,8 +184,6 @@ def updateAttivita(request, pk):
             descrizione = form.cleaned_data['descrizione']
             oraArrivo = form.cleaned_data['oraArrivo']
             cliente = form.cleaned_data['cliente']
-            #riferimentoCommessa = form.cleaned_data['riferimentoCommessa']
-            #idRC = Amministrativo.objects.all().filter(user_auth=request.user).id
             riferimentoCommessa = Amministrativo.objects.get(user_auth=request.user)
             note = form.cleaned_data['note']
             pianoC = form.cleaned_data['pianoCampionamento']
@@ -200,7 +193,7 @@ def updateAttivita(request, pk):
 
             dia = form.cleaned_data['dia']
 
-            trabajador = form.cleaned_data['trabajador']
+            trabajador = form.cleaned_data['tecnici']
 
             if pk=='0':
                 newAttivita = Task.objects.create(descrizione=descrizione,
@@ -220,13 +213,13 @@ def updateAttivita(request, pk):
             newAttivita.riferimentoCommessa=riferimentoCommessa
             newAttivita.note=note
 
-            if not newAttivita.ordineServizio or ordineS is False:
+            if not newAttivita.ordineServizio or ordineS is False or newAttivita.ordineServizio.name == 'False':
                 newAttivita.ordineServizio=ordineS
 
-            if not newAttivita.pianoCampionamento or pianoC is False:
+            if not newAttivita.pianoCampionamento or pianoC is False or newAttivita.pianoCampionamento.name == 'False':
                 newAttivita.pianoCampionamento=pianoC
 
-            if not newAttivita.offerta or offerta is False:
+            if not newAttivita.offerta or offerta is False or newAttivita.offerta.name == 'False':
                 newAttivita.offerta=offerta
 
             newAttivita.tecnici.clear()
@@ -268,7 +261,7 @@ def updateAttivita(request, pk):
 
             bonTrabajador = form.instance.tecnici.all()
 
-            form.fields['trabajador'] = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
+            form.fields['tecnici'] = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
                                                                        initial=bonTrabajador,
                                                                        required=False,
                                                                         widget= forms.SelectMultiple(attrs={
@@ -279,6 +272,64 @@ def updateAttivita(request, pk):
 
 def divieto(request):
     return render(request, 'divietoAcc.html')
+
+#-------UPDATE GIORNO---------------------------------------------------------------------------------------------------
+
+class Form_Giorno(forms.ModelForm):
+
+    personale_assente = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
+                                             required=False,
+                                             widget=forms.SelectMultiple(attrs={
+                                                 'class': 'chosen-select'
+                                             }))
+
+    class Meta:
+
+        model = Giorno
+
+        exclude = ('giorno', 'personaleAssente',)
+
+
+def updateGiorno(request, pk):
+    if request.POST:
+        form = Form_Giorno(request.POST)
+
+        if form.is_valid():
+
+            trabajador = form.cleaned_data['personale_assente']
+
+            dia = Giorno.objects.get(id=pk)
+
+            dia.personaleAssente.clear()
+
+            if trabajador:
+                for tecnicos in trabajador:
+                    dia.personaleAssente.add(tecnicos)
+
+            dia.save()
+
+            return render(request, 'successo.html')
+
+        else:
+            return HttpResponse('Fallito?!?')
+
+    else:
+
+        dia = Giorno.objects.get(id=pk)
+
+        form = Form_Giorno(instance=dia)
+
+        bonTrabajador = form.instance.personaleAssente.all()
+
+        form.fields['personale_assente'] = forms.ModelMultipleChoiceField(queryset=Tecnico.objects.all(),
+                                                                initial=bonTrabajador,
+                                                                required=False,
+                                                                widget=forms.SelectMultiple(attrs={
+                                                                    'class': 'chosen-select'
+                                                                }))
+
+        return render(request, 'updateGiorno.html', {'form': form, 'pk': pk, 'dia':dia})
+
 
 #-------LOGIN/LOGOUT----------------------------------------------------------------------------------------------------
 

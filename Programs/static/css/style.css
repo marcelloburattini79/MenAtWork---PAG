@@ -4,6 +4,18 @@ body{
     background-color: #e2edf6;
 }
 
+label{
+    font-weight: 600;
+}
+
+.marginDecor{
+    margin-bottom: 1.5em;
+}
+
+#offerta-clear_id, #ordineServizio-clear_id, #pianoCampionamento-clear_id{
+    margin-left: 1em;
+}
+
 .nomeUser{
     font-weight: 600;
 
@@ -74,9 +86,6 @@ body{
     background-color: green;
 }
 
-label{
-    font-weight: normal;
-}
 
 #loginDIV{
     width: 100px;
@@ -104,6 +113,7 @@ label{
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 .btn {
