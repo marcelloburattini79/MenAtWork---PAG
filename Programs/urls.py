@@ -13,6 +13,8 @@ urlpatterns = [
 
     url(r'^update_task_CUST_(?P<pk>\d+)$', views.updateAttivita, name='update_task_CUST'),
 
+    url(r'^delete_task_(?P<pk>\d+)$', views.deleteTask, name='delete_task'),
+
     url(r'^update_giorno_(?P<pk>\d+)$', views.updateGiorno, name='update_giorno'),
 
     url(r'^download_(?P<pk>\d+)$', views.provaDownLoad, name='download'),

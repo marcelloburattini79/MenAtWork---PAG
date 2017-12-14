@@ -117,7 +117,7 @@ def creaAttivita(request):
         return render(request, 'create_task.html', {'form':form})
 
 
-#------UPDATE/CREATE TASK-----------------------------------------------------------------------------------------------
+#------UPDATE/CREATE/DELETE TASK-----------------------------------------------------------------------------------------------
 
 class Form_TaskMF(forms.ModelForm):
 
@@ -272,6 +272,17 @@ def updateAttivita(request, pk):
 
 def divieto(request):
     return render(request, 'divietoAcc.html')
+
+def deleteTask(request, pk):
+
+    if request.POST:
+
+        attivita = Task.objects.get(id=pk)
+
+        attivita.delete()
+
+        return (request, 'successo.html')
+
 
 #-------UPDATE GIORNO---------------------------------------------------------------------------------------------------
 
