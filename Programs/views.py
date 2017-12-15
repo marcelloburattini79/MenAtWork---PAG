@@ -412,6 +412,71 @@ def esci(request):
     logout(request)
     return render(request, 'home.html')
 
+class Form_changePass(forms.Form):
+
+    vecchia_password = forms.CharField(label="Password",
+                               widget=forms.PasswordInput(
+                                attrs={
+                                    'class': 'form-control',
+                                    'id' : "inputPassword",
+                                    'required' : 'True',
+                                    'placeholder' : 'Password'
+                                }
+                               )),
+    nuova_password = forms.CharField(label="Password",
+                               widget=forms.PasswordInput(
+                                attrs={
+                                    'class': 'form-control',
+                                    'id' : "inputPassword",
+                                    'required' : 'True',
+                                    'placeholder' : 'Password'
+                                }
+                               )),
+
+    ripeti_password = forms.CharField(label="Password",
+                                     widget=forms.PasswordInput(
+                                         attrs={
+                                             'class': 'form-control',
+                                             'id': "inputPassword",
+                                             'required': 'True',
+                                             'placeholder': 'Password'
+                                         }
+                                     ))
+
+    def clean(self):
+        cleaned_data = super(Form_changePass, self).clean()
+
+        nuova_password = self.cleaned_data.get('nuova_password')
+        ripeti_password = self.cleaned_data.get('ripeti_password')
+
+        if nuova_password != ripeti_password:
+            raise forms.ValidationError("Wrong login or password")
+
+        return self.cleaned_data
+
+def changePass(request):
+
+    if request.POST:
+
+        form = Form_changePass(request.POST)
+
+        if form.is_valid():
+
+            if request.user.password == form.cleaned_data["vecchia_password"]:
+
+                request.user.password = form.cleaned_data["nuova_password"]
+
+                return render(request, 'successo.html')
+
+            else:
+                return HttpResponse('la vecchia password è sbagliata')
+
+        else:
+            return HttpResponse('Il form non è vallido')
+
+
+
+
 
 
 #---------METODI X IL DOWNLOAD----------------------------------------------------------------------------------------------------------
