@@ -12,6 +12,10 @@ label{
     margin-bottom: 1.5em;
 }
 
+.marginDecorBT{
+    margin-left: 1.5em;
+}
+
 #offerta-clear_id, #ordineServizio-clear_id, #pianoCampionamento-clear_id{
     margin-left: 1em;
 }
@@ -123,7 +127,7 @@ label{
     -webkit-user-select: none;
     user-select: none;
     cursor: default;
-    margin-left: 15px;
+
 }
 
 

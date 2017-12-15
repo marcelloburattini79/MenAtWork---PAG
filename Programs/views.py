@@ -277,11 +277,11 @@ def deleteTask(request, pk):
 
     if request.POST:
 
-        attivita = Task.objects.get(id=pk)
+        attivitaDel = Task.objects.get(id=pk)
 
-        attivita.delete()
+        attivitaDel.delete()
 
-        return (request, 'successo.html')
+        return render (request, 'successo.html')
 
 
 #-------UPDATE GIORNO---------------------------------------------------------------------------------------------------

@@ -49,21 +49,29 @@
 
                     </div>
 
-                    <span><input type="submit" class="btn btn-primary float-right" value="Conferma" /></span>
-
-                    <span><input type="button" class="btn btn-danger float-right" value="Annulla" /></span>
-
                     <span>
-
+                        <input type="submit" class="btn btn-primary  marginDecorBT float-right" value="Conferma" />
                     </span>
 
+                    <span><a href="{% url "listaTaskPGN" %}" >
+                        <input type="button" class="btn btn-danger  float-right" value="Annulla" />
+                    </a></span>
+
+
+                {% if pk != '0' %}
+
                 </form>
 
-                <form method="post" class="float-left" action="{% url "delete_task" pk %}">
+                <form method="post" class="float-left" action="{% url "delete_task" pk %}"
+                onsubmit="return confirm('Do you really want to submit the form?');">
 
-                            <input type="submit" class="btn btn-signin" value="Elimina Attività" />
+                    {% csrf_token %}
+
+                    <input type="submit" class="btn btn-warning" style="margin-top: -64px" value="Elimina" />
 
                 </form>
+
+                {% endif %}
  </div>
 
 {% endblock %}
