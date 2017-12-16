@@ -414,26 +414,18 @@ def esci(request):
 
 class Form_changePass(forms.Form):
 
-    vecchia_password = forms.CharField(label="Password",
-                               widget=forms.PasswordInput(
-                                attrs={
-                                    'class': 'form-control',
-                                    'id' : "inputPassword",
-                                    'required' : 'True',
-                                    'placeholder' : 'Password'
-                                }
-                               )),
-    nuova_password = forms.CharField(label="Password",
-                               widget=forms.PasswordInput(
-                                attrs={
-                                    'class': 'form-control',
-                                    'id' : "inputPassword",
-                                    'required' : 'True',
-                                    'placeholder' : 'Password'
-                                }
-                               )),
 
-    ripeti_password = forms.CharField(label="Password",
+    nuova_password = forms.CharField(label="Nuova Password",
+                               widget=forms.PasswordInput(
+                                attrs={
+                                    'class': 'form-control',
+                                    'id' : "inputPassword",
+                                    'required' : 'True',
+                                    'placeholder' : 'Password'
+                                }
+                               ))
+
+    ripeti_password = forms.CharField(label="Ripeti Password",
                                      widget=forms.PasswordInput(
                                          attrs={
                                              'class': 'form-control',
@@ -443,6 +435,7 @@ class Form_changePass(forms.Form):
                                          }
                                      ))
 
+
     def clean(self):
         cleaned_data = super(Form_changePass, self).clean()
 
@@ -450,7 +443,7 @@ class Form_changePass(forms.Form):
         ripeti_password = self.cleaned_data.get('ripeti_password')
 
         if nuova_password != ripeti_password:
-            raise forms.ValidationError("Wrong login or password")
+            raise forms.ValidationError("Le password non coincidono. Riprova")
 
         return self.cleaned_data
 
@@ -462,17 +455,19 @@ def changePass(request):
 
         if form.is_valid():
 
-            if request.user.password == form.cleaned_data["vecchia_password"]:
+            request.user.set_password(form.cleaned_data["nuova_password"])
 
-                request.user.password = form.cleaned_data["nuova_password"]
+            request.user.save()
 
-                return render(request, 'successo.html')
-
-            else:
-                return HttpResponse('la vecchia password è sbagliata')
+            return render(request, 'successo.html')
 
         else:
             return HttpResponse('Il form non è vallido')
+
+    else:
+        form = Form_changePass()
+        return render(request, 'changePass.html', {'form': form})
+
 
 
 

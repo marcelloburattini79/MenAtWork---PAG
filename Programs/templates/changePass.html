@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block centrale %}
+
+        <h1>Modifica Password</h1>
+
+        <div class="card card-container">
+
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+
+            <p id="profile-name" class="profile-name-card"></p>
+
+            <form method="post" class="form-signin" action="{{ changePass }}">
+
+                {% csrf_token %}
+
+                {% for field in form %}
+
+                    <label> {{ field.label_tag }} </label>
+                    {{ field }}
+
+                {% endfor %}
+
+
+                <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="Conferma" />
+
+            </form>
+        </div>
+
+
+{% endblock %}

@@ -148,6 +148,14 @@
 
     </table>
 
+    <form class="form-signin" action="changePass">
+
+          {% csrf_token %}
+
+          <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="Modifica Password" />
+
+     </form>
+
 
 
 {% endblock %}
