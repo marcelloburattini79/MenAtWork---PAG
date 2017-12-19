@@ -459,10 +459,12 @@ def changePass(request):
 
             request.user.save()
 
+            login(request, request.user)
+
             return render(request, 'successo.html')
 
         else:
-            return HttpResponse('Il form non è vallido')
+            return render(request, 'noChange.html')
 
     else:
         form = Form_changePass()

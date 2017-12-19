@@ -50,8 +50,11 @@
 
               {% if request.user.is_authenticated %}
                   <li class="nav-item">
-                      <span class=" nomeUser">{{ request.user.first_name }}</span>
+                      <a class="nav-link" href="{% url "changePass" %}">
+                          {{ request.user.first_name }}
+                      </a>
                   </li>
+
 
                   <li class="nav-item">
                       <a class="nav-link" href="{% url "disconnesso" %}">Logout</a>

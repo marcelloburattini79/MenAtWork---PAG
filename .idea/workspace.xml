@@ -21,8 +21,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Programs/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="459" column="31" lean-forward="true" selection-start-line="459" selection-start-column="31" selection-end-line="459" selection-end-column="31" />
+            <state relative-caret-position="776">
+              <caret line="466" column="49" lean-forward="false" selection-start-line="466" selection-start-column="49" selection-end-line="466" selection-end-column="49" />
               <folding>
                 <element signature="e#717#806#0" expanded="false" />
                 <element signature="e#856#1503#0" expanded="false" />
@@ -66,9 +66,9 @@
                 <element signature="e#13570#13699#0" expanded="false" />
                 <element signature="e#13612#13698#0" expanded="false" />
                 <element signature="e#13919#13974#0" expanded="false" />
-                <element signature="e#16042#16431#0" expanded="false" />
-                <element signature="e#16464#16875#0" expanded="false" />
-                <element signature="e#16909#17312#0" expanded="false" />
+                <element signature="e#16079#16468#0" expanded="false" />
+                <element signature="e#16501#16912#0" expanded="false" />
+                <element signature="e#16946#17349#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -77,28 +77,28 @@
       <file leaf-file-name="connection.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Programs/templates/connection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="51" />
+            <state relative-caret-position="187">
+              <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MenAtWork/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="147">
+              <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changePass.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Programs/templates/changePass.html">
+      <file leaf-file-name="divietoAcc.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Programs/templates/divietoAcc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -114,42 +114,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Programs/static/css/style.css">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MenAtWork/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-              <folding>
-                <marker date="1513323886489" expanded="true" signature="1734:1736" ph="{...}" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Programs/models.py">
+      <file leaf-file-name="noChange.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Programs/templates/noChange.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-              <folding>
-                <element signature="e#525#555#0" expanded="false" />
-                <element signature="e#585#838#0" expanded="false" />
-                <element signature="e#807#838#0" expanded="false" />
-                <element signature="e#875#933#0" expanded="false" />
-                <element signature="e#902#933#0" expanded="false" />
-                <element signature="e#969#3893#0" expanded="false" />
-                <element signature="e#3867#3893#0" expanded="false" />
-                <element signature="e#4192#4969#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_task.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Programs/templates/create_task.html">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="64" column="89" lean-forward="false" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="89" />
+            <state relative-caret-position="515">
+              <caret line="53" column="55" lean-forward="false" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="changePass.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Programs/templates/changePass.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -158,8 +157,8 @@
       <file leaf-file-name="listaTaskPGN.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Programs/templates/listaTaskPGN.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="156" selection-end-column="12" />
+            <state relative-caret-position="631">
+              <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -184,7 +183,6 @@
       <list>
         <option value="$PROJECT_DIR$/Programs/templates/create_taskMF.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
-        <option value="$PROJECT_DIR$/MenAtWork/settings.py" />
         <option value="$PROJECT_DIR$/Programs/static/js/filtro.js" />
         <option value="$PROJECT_DIR$/Programs/static/js/chosen.jquery.js" />
         <option value="$PROJECT_DIR$/Programs/static/css/bootstrap-chosen.css" />
@@ -195,13 +193,15 @@
         <option value="$PROJECT_DIR$/Programs/templates/divietoAcc.html" />
         <option value="$PROJECT_DIR$/Programs/models.py" />
         <option value="$PROJECT_DIR$/Programs/templates/updateGiorno.html" />
-        <option value="$PROJECT_DIR$/Programs/templates/connection.html" />
         <option value="$PROJECT_DIR$/Programs/static/css/style.css" />
         <option value="$PROJECT_DIR$/Programs/urls.py" />
         <option value="$PROJECT_DIR$/Programs/templates/create_task.html" />
         <option value="$PROJECT_DIR$/Programs/templates/changePass.html" />
-        <option value="$PROJECT_DIR$/Programs/views.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/Programs/templates/noChange.html" />
+        <option value="$PROJECT_DIR$/Programs/views.py" />
+        <option value="$PROJECT_DIR$/MenAtWork/settings.py" />
+        <option value="$PROJECT_DIR$/Programs/templates/connection.html" />
         <option value="$PROJECT_DIR$/Programs/templates/listaTaskPGN.html" />
       </list>
     </option>
@@ -213,10 +213,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1924" />
-    <option name="height" value="1056" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -233,7 +232,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -349,11 +347,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MEGAsync/Flask/Work_manager" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
@@ -609,8 +608,8 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="MenAtWork.settings" />
+        <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\mw\AppData\Local\Programs\Python\Python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -622,7 +621,7 @@
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="browserUrl" value="127.0.0.1:8000" />
       <option name="runTestServer" value="false" />
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
@@ -659,11 +658,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
+    <frame x="-7" y="0" width="1924" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13841201" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1416309" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@MenAtWork - PAG" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3954496" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26760563" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -676,7 +676,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@MenAtWork - PAG" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.396072" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -723,8 +722,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/django/utils/datetime_safe.py" />
-    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/django/utils/translation/trans_real.py" />
     <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/django/utils/translation/__init__.py" />
     <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/django/utils/formats.py" />
     <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/django/db/models/fields/__init__.py" />
@@ -754,13 +751,6 @@
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/template/base.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/db/models/fields/files.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/files/base.py" />
-    <entry file="file://$PROJECT_DIR$/MenAtWork/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Programs/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -796,13 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Programs/templates/divietoAcc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/contrib/staticfiles/handlers.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/wsgiref/handlers.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/servers/basehttp.py" />
@@ -832,6 +815,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/handlers/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Programs/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -839,14 +829,6 @@
           <folding>
             <marker date="1513323886489" expanded="true" signature="1734:1736" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Programs/templates/create_task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="89" lean-forward="false" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,10 +849,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/handlers/wsgi.py">
+    <entry file="file://$PROJECT_DIR$/Programs/templates/create_task.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        <state relative-caret-position="1088">
+          <caret line="64" column="89" lean-forward="false" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="53" column="55" lean-forward="false" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Programs/templates/changePass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Programs/templates/divietoAcc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Programs/templates/noChange.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MenAtWork/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Programs/templates/connection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -883,34 +913,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Programs/templates/connection.html">
+    <entry file="file://$PROJECT_DIR$/MenAtWork/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Programs/templates/changePass.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="306">
+          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Programs/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="459" column="31" lean-forward="true" selection-start-line="459" selection-start-column="31" selection-end-line="459" selection-end-column="31" />
+        <state relative-caret-position="776">
+          <caret line="466" column="49" lean-forward="false" selection-start-line="466" selection-start-column="49" selection-end-line="466" selection-end-column="49" />
           <folding>
             <element signature="e#717#806#0" expanded="false" />
             <element signature="e#856#1503#0" expanded="false" />
@@ -954,17 +968,17 @@
             <element signature="e#13570#13699#0" expanded="false" />
             <element signature="e#13612#13698#0" expanded="false" />
             <element signature="e#13919#13974#0" expanded="false" />
-            <element signature="e#16042#16431#0" expanded="false" />
-            <element signature="e#16464#16875#0" expanded="false" />
-            <element signature="e#16909#17312#0" expanded="false" />
+            <element signature="e#16079#16468#0" expanded="false" />
+            <element signature="e#16501#16912#0" expanded="false" />
+            <element signature="e#16946#17349#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Programs/templates/listaTaskPGN.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="156" selection-end-column="12" />
+        <state relative-caret-position="631">
+          <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding />
         </state>
       </provider>
