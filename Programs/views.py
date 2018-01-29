@@ -15,7 +15,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
-
 # Create your views here.
 
 def home(request):
@@ -210,7 +209,7 @@ def updateAttivita(request, pk):
             newAttivita.descrizione = descrizione
             newAttivita.oraArrivo=oraArrivo
             newAttivita.cliente=cliente
-            newAttivita.riferimentoCommessa=riferimentoCommessa
+
             newAttivita.note=note
 
             if not newAttivita.ordineServizio or ordineS is False or newAttivita.ordineServizio.name == 'False':
@@ -227,7 +226,6 @@ def updateAttivita(request, pk):
             if trabajador:
                 for tecnicos in trabajador:
                     newAttivita.tecnici.add(tecnicos)
-
 
 
             giorno = Giorno.objects.get(giorno=dia)
@@ -301,6 +299,10 @@ class Form_Giorno(forms.ModelForm):
         exclude = ('giorno', 'personaleAssente',)
 
 
+@user_passes_test(lambda u:
+                  u.is_authenticated and
+                  u.groups.filter(name='Full').count() > 0,
+                  login_url='divieto')
 def updateGiorno(request, pk):
     if request.POST:
         form = Form_Giorno(request.POST)
@@ -469,10 +471,6 @@ def changePass(request):
     else:
         form = Form_changePass()
         return render(request, 'changePass.html', {'form': form})
-
-
-
-
 
 
 

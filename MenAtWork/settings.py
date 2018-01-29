@@ -24,7 +24,7 @@ SECRET_KEY = 'mw4y2i)1jxy^#dc8+5)emgaa*z0-@*1%#hk(9p(^nah+h^q%l='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['192.168.1.13', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.1.13', '127.0.0.1', '213.82.145.254']
 
 
 # Application definition
@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'manatwork1.1',
         'USER': 'marcello',
-        'PASSWORD': 'maria@79',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PASSWORD': 'jesussss@79',
+        'HOST': '192.168.1.250',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
