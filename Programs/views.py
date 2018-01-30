@@ -9,7 +9,7 @@ import os
 import MenAtWork.settings
 from django.core.files import File
 from django.forms import Textarea
-from django.forms.extras.widgets import SelectDateWidget
+from django.forms.widgets import SelectDateWidget
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test

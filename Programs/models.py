@@ -5,7 +5,7 @@ from datetime import *
 # Create your models here.
 
 class Utente(models.Model):
-    user_auth = models.OneToOneField(User, primary_key=True)
+    user_auth = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE,)
 
     telefono = models.CharField(max_length=20, verbose_name="Cellulare",
                              null=True, default=None, blank=True)
@@ -126,12 +126,12 @@ class Task(models.Model):
     oraArrivo = models.CharField(max_length=500, verbose_name='Ora di arrivo',
                                 null = True, blank=True, default='--')
 
-    cliente = models.ForeignKey(Cliente, verbose_name="Cliente", default=None)
+    cliente = models.ForeignKey(Cliente, verbose_name="Cliente", default=None, on_delete=models.CASCADE,)
 
     tecnici = models.ManyToManyField(Tecnico, verbose_name='Tecnici', related_name='taskAssegnati',
                                     blank=True, null=True, default=None)
 
-    riferimentoCommessa = models.ForeignKey(Amministrativo, verbose_name='Riferimento commessa', default=None)
+    riferimentoCommessa = models.ForeignKey(Amministrativo, verbose_name='Riferimento commessa', default=None, on_delete=models.CASCADE,)
 
     note = models.TextField(verbose_name='Note', null = True, blank=True, default=None, )
 
