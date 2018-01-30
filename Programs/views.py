@@ -230,6 +230,8 @@ def updateAttivita(request, pk):
 
             giorno = Giorno.objects.get(giorno=dia)
 
+            newAttivita.giorno.clear() #necessario quando si modifica il giorno di un'attività
+
             newAttivita.giorno.add(giorno)
 
             newAttivita.save()
