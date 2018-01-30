@@ -9,13 +9,14 @@ import os
 import MenAtWork.settings
 from django.core.files import File
 from django.forms import Textarea
-from django.forms.extras.widgets import SelectDateWidget
+from django.forms.widgets import SelectDateWidget
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 # Create your views here.
+#Controllo GitHub
 
 def home(request):
     inizio = 0
@@ -229,6 +230,8 @@ def updateAttivita(request, pk):
 
 
             giorno = Giorno.objects.get(giorno=dia)
+
+            newAttivita.giorno.clear() #necessario quando si modifica il giorno di un'attività
 
             newAttivita.giorno.add(giorno)
 
