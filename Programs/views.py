@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 # Create your views here.
+#Controllo GitHub
 
 def home(request):
     inizio = 0
